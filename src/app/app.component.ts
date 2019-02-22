@@ -14,4 +14,3 @@ export class AppComponent {
   msg = `Mi nombre es ${this.title} y soy de ${this.ciudad}, tengo ${this.res} años`;
   msgAntiguo = 'Hola "con comillas"' + this.title;
 }
-ghfjhgfjhgfjfjghf

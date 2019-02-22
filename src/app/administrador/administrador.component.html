@@ -1,0 +1,20 @@
+<p>
+  administrador works!
+</p>
+
+<div class = "row">
+  <h3>Ruta home</h3>
+  <button [routerLink]="['/home']">Home</button>
+</div>
+
+<div class = "row">
+    <h3>hijos Administrador</h3>
+    <button [routerLink]="['/adm/menu']">Menu adm</button>
+    <button [routerLink]="['/adm/opciones']">Opciones</button>
+  </div>
+  <router-outlet></router-outlet>
+
+  <div class = "row">
+    <app-menu></app-menu>
+    <app-opciones></app-opciones>
+  </div>

@@ -1,0 +1,23 @@
+<p>
+  home works!
+</p>
+<app-menu></app-menu>
+<div class = "row">
+  <h3>hijos de APP</h3>
+  <button [routerLink]="['/login']">Login</button>
+  <button [routerLink]="['/galeria']">Galeria</button>
+  <button [routerLink]="['/noticias']">Noticias</button>
+  <button [routerLink]="['/adm']">Administrador</button>
+</div>
+<div class = "row">
+  <h3>hijos de HOME</h3>
+  <button [routerLink]="['/home/cuerpo']">Cuerpo</button>
+  <button [routerLink]="['/home/slide']">Slide</button>
+</div>
+
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>
+
+
