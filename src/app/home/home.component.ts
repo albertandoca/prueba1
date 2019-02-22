@@ -21,11 +21,6 @@ export class HomeComponent implements OnInit {
     this.nombre = 'Carlos';
     this.verificar = true;
     this.valorBoton = 'ocultar bloque';
-
-    setInterval(() => {
-      this.verifica();
-    }, 5000);
-    
   }
 
   saludo(saludo: String) {
@@ -42,7 +37,7 @@ export class HomeComponent implements OnInit {
     for (let i = 0; i < 10000; i++){
       numeros.push(i);
     };
-    
+
     console.log(numeros);
     this.saludo('hola')
 
@@ -50,7 +45,7 @@ export class HomeComponent implements OnInit {
 
   ver() {
     this.mostrar = this.mostrar == true ? false : true;
-    
+
   }
 
   verifica() {

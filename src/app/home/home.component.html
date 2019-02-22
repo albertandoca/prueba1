@@ -1,19 +1,19 @@
 <p>
   home works!
 </p>
+<div class="row">
+  <button [hidden]= !mostrar [ngStyle]="{backgroundColor: 'red' }" (click)= 'ver()'>ver boton</button>
+  <button [hidden]= mostrar [ngStyle]="{backgroundColor: 'yellow' }" (click)= 'ver()'>ocultar boton</button>
 
-<button [hidden]= !mostrar [ngStyle]="{backgroundColor: 'red' }" (click)= 'ver()'>ver boton</button>
-<button [hidden]= mostrar [ngStyle]="{backgroundColor: 'yellow' }" (click)= 'ver()'>ocultar boton</button>
+  <input type="text" [(ngModel)] = nombre>
 
-<input type="text" [(ngModel)] = nombre>
-
-<p *ngIf="mostrar"> tu nombre es: {{ nombre }} </p>
+  <p *ngIf="mostrar"> tu nombre es: {{ nombre }} </p>
+</div>
 <button (click)= 'verifica()'>{{ valorBoton }}</button>
-
-<div *ngIf="verificar">
-  <h3>grupo de etiqutas</h3>
+<div *ngIf="verificar" class="row">
+  <h3 [ngClass]="{ 'colorInput' : mostrar }">grupo de etiqutas</h3>
   <button (click)= 'ver()'>Galeria</button>
-  <button (click)= 'ver()'>Noticias</button>
+  <button [ngClass]="{ 'colorInput' : true }" (click)= 'ver()'>Noticias</button>
   <input type="text" >
 </div>
 
