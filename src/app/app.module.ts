@@ -20,7 +20,7 @@ import { FooterComponent } from './home/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule    
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
