@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChildren, ViewContainerRef, ViewChild } from '@angular/core';
 import { Persona } from '../modelos/persona';
 
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,17 +16,24 @@ export class HomeComponent implements OnInit {
   verificar: boolean;
   verificar1: boolean;
   valorBoton: String;
-  @ViewChild('showBlock') verBloque;
-  @ViewChild('noShowBlock') noVerBloque;
+  @ViewChild('template1') template1;
+  @ViewChild('template2') template2;
   personas: Persona[];
   estudianteSeleccionado: number;
+  imagenes: String[];
+  menus: String[];
+  menuHorizontal: String[];
+  menuVertical: String[];
+
 
   color: String;
   inicio: number;
   fin: number;
 
 
-  constructor() { }
+  constructor(private modalService: NgbModal) {
+
+   }
 
   ngOnInit() {
     this.mostrar = true;
@@ -34,6 +43,32 @@ export class HomeComponent implements OnInit {
     this.valorBoton = 'ocultar bloque';
     this.color = 'white';
     this.estudianteSeleccionado = 5;
+    this.imagenes = [ '../../assets/img/persona.png',
+                      '../../assets/img/persona.png',
+                      '../../assets/img/persona.png',
+                      '../../assets/img/persona.png',
+                      '../../assets/img/persona.png',
+                      '../../assets/img/persona.png',
+                      '../../assets/img/persona.png',
+                      '../../assets/img/persona.png',
+                      '../../assets/img/persona.png',
+                      '../../assets/img/persona.png'
+    ];
+    this.menus = ['home', 'galería', 'noticias', 'contacto', 'internacional',
+    'nacional', 'noticias', 'contacto', 'internacional', 'nacional'];
+    this.menuHorizontal = [];
+    this.menuVertical = [];
+this.menus.forEach((element, index) => {
+  console.log(index);
+  /* if (index < 6) {
+    this.menuHorizontal.push(element);
+    console.log(this.menuHorizontal);
+  } else {
+    this.menuVertical.push(element);
+  } */
+  index < 4 ? this.menuHorizontal.push(element) : this.menuVertical.push(element);
+});
+
     this.personas = [
       {
         id: 1,
@@ -136,6 +171,16 @@ export class HomeComponent implements OnInit {
 
   cambiarNombre() {
     this.personas[this.estudianteSeleccionado].nombre = 'nombre Cambiado';
+  }
+
+
+  openModal(contenedor) {
+    this.modalService.open(contenedor);
+  }
+
+
+  close(dato: String) {
+    alert('desde el close');
   }
 
 }

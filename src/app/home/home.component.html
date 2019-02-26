@@ -1,85 +1,75 @@
-<p>
-  home works!
-</p>
-<div class="row">
-  <button [hidden]= !mostrar [ngStyle]="{backgroundColor: 'red' }" (click)= 'ver()'>ver boton</button>
-  <button [hidden]= mostrar [ngStyle]="{backgroundColor: 'yellow' }" (click)= 'ver()'>ocultar boton</button>
-
-  <input type="text" [(ngModel)] = nombre [ngStyle]="{backgroundColor: color }">
-  <input class="class1" type="text" [(ngModel)] = nombre [ngClass]="{ 'class2' : mostrar }">
-  <input type="number" [(ngModel)] = inicio >
-  <input type="number" [(ngModel)] = fin >
-  <h3>for en div array</h3>
-  <div class="row" *ngFor="let persona of personas let i = index">
-    <label *ngIf="i >= inicio && i <= fin">{{i}} {{ persona.nombre }} {{persona.apellido}}</label>
-
-  </div>
-
+<div class="container">
   <div class="row">
-    <select name="estudiantes" id="estudiantes" [(ngModel)] = estudianteSeleccionado (change)="cambiarNombre()">
-      <option value="999">Seleccione estudiante...</option>
-      <option *ngFor="let persona of personas let i = index" value="{{i}}">{{ persona.nombre }} {{persona.apellido}}</option>
-    </select>
+    <div class="col-sm-12 col-md-3 col-lg-4 col-xl-4">
+      <h1>logo empresa</h1>
+    </div>
+    <div class="col-sm-12 col-md-9 col-lg-8 col-xl-8">
+      <!-- <div class="row">
+        <div class="col-sm-4 col-md-3 col-lg-3 col-xl-3" *ngFor="let menu of menus">
+          <p>{{menu}}</p>
+        </div>
+      </div> -->
 
-    <h3>{{ personas[estudianteSeleccionado].nombre }} {{ personas[estudianteSeleccionado].edad}}</h3>
-    <img src="{{ personas[estudianteSeleccionado].urlFoto }}" alt="Foto del estudiante">
+      <ul class="menu">
+        <li *ngFor="let menu of menuHorizontal let i = index">{{menu}}</li>
+        <li>más...</li>
+      </ul>
+
+    </div>
   </div>
-
-  <h2>{{personas[5].nombre}}</h2>
-
   <div class="row">
-    <h3>for en label</h3>
-    <label *ngFor="let persona of personas">{{ persona }}<br></label>
+    <img src="../../assets/img/paisaje.png" alt="paisaje">
   </div>
-
   <div class="row">
-    <h3>for en li</h3>
-    <ul>
-      <li *ngFor="let persona of personas let i = index"> {{ persona }} </li>
-    </ul>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4" *ngFor="let imagen of imagenes">
+          <img src="{{ imagen }}" alt="persona">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+
+
+      <ng-template #ayuda let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Mi modal de prueba</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="dateOfBirth">Date of birth</label>
+              <div class="input-group">
+                <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+        </div>
+      </ng-template>
+
+      <button class="btn btn-lg btn-outline-primary" (click)="openModal(ayuda)">Launch demo modal</button>
+
+      <hr>
+    </div>
   </div>
-
-
-  <p *ngIf="mostrar"> tu nombre es: {{ nombre }} </p>
+  <div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+      <h3>dirección</h3>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+      <h3>redes sociales</h3>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+      <h3>contactos</h3>
+    </div>
+  </div>
 </div>
-<button (click)= 'verifica()'>{{ valorBoton }}</button>
-<div *ngIf="verificar" class="row">
-  <h3 [ngClass]="{ 'colorInput' : mostrar }">grupo de etiqutas</h3>
-  <button (click)= 'ver()'>Galeria</button>
-  <button [ngClass]="{ 'colorInput' : true }" (click)= 'ver()'>Noticias</button>
-  <input type="text" >
-</div>
-
-<app-menu></app-menu>
-<div class = "row">
-  <h3>hijos de APP</h3>
-  <button [routerLink]="['/login']">Login</button>
-  <button [routerLink]="['/galeria']">Galeria</button>
-  <button [routerLink]="['/noticias']">Noticias</button>
-  <button [routerLink]="['/adm']">Administrador</button>
-</div>
-<div class = "row">
-  <h3>hijos de HOME</h3>
-  <button [routerLink]="['/home/cuerpo']">Cuerpo</button>
-  <button [routerLink]="['/home/slide']">Slide</button>
-</div>
-
-
-<router-outlet></router-outlet>
-
-<app-footer></app-footer>
-
-
-<ng-template #showBlock>
-  <p>
-    Show this only if "show" is true
-  </p>
-</ng-template>
-
-<ng-template #notShowBlock>
-  <p>
-    Show this only if "show" is not true
-  </p>
-</ng-template>
-
-
